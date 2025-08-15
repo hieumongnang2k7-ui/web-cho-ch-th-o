@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>15 câu chúc - Chị sinh bé gái</title>
+  <style>
+    /* Reset */
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%}
+
+    body{
+      background:#000;
+      overflow:hidden;
+      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      color:#fff;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    /* Twinkling star field using CSS */
+    .stars, .twinkle{
+      position:fixed;inset:0;z-index:0;pointer-events:none;
+      background-repeat:repeat;opacity:1;
+    }
+    /* many small stars */
+    .stars{
+      background-image: radial-gradient(2px 2px at 20px 30px, rgba(255,255,255,0.9) 50%, transparent 51%),
+                        radial-gradient(1.5px 1.5px at 80px 90px, rgba(255,255,255,0.8) 50%, transparent 51%),
+                        radial-gradient(1px 1px at 130px 60px, rgba(255,255,255,0.7) 50%, transparent 51%),
+                        radial-gradient(1.5px 1.5px at 200px 20px, rgba(255,255,255,0.85) 50%, transparent 51%),
+                        radial-gradient(1px 1px at 260px 160px, rgba(255,255,255,0.7) 50%, transparent 51%);
+      background-size: 300px 200px;
+      filter: drop-shadow(0 0 2px rgba(255,255,255,0.1));
+    }
+    /* larger twinkling stars animated */
+    .twinkle::before, .twinkle::after{
+      content:'';position:absolute;inset:0;background-repeat:repeat;opacity:0.8;
+      background-image: radial-gradient(3px 3px at 40px 120px, rgba(255,255,255,1) 50%, transparent 51%),
+                        radial-gradient(4px 4px at 220px 80px, rgba(255,255,255,0.95) 50%, transparent 51%),
+                        radial-gradient(2.5px 2.5px at 120px 40px, rgba(255,255,255,0.9) 50%, transparent 51%);
+      background-size: 400px 300px;
+      animation: twinkle 4s linear infinite alternate;
+    }
+    .twinkle::after{animation-duration:6s;opacity:0.6}
+    @keyframes twinkle{from{opacity:0.4;transform:scale(0.98)}to{opacity:1;transform:scale(1.02)}}
+
+    /* Container for layers */
+    .scene{position:relative;z-index:2;width:100%;height:100%;display:flex;gap:10px;padding:40px}
+    .layer{flex:1;position:relative;overflow:visible}
+
+    /* message card style */
+    .msg{
+      position:absolute;left:50%;transform:translateX(-50%);
+      white-space:nowrap;padding:8px 14px;border-radius:10px;font-size:18px;
+      background:linear-gradient(90deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+      backdrop-filter: blur(4px);
+      box-shadow:0 6px 18px rgba(0,0,0,0.6), 0 0 18px rgba(255,192,203,0.04) inset;
+      color:#fff;text-align:center;max-width:220px;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.7), 0 0 6px rgba(255,150,180,0.06);
+      border:1px solid rgba(255,255,255,0.04);
+    }
+
+    /* glow for important words */
+    .msg strong{color:#ffdbe6;text-shadow:0 0 8px rgba(255,200,220,0.6)}
+
+    /* animation: move from above (translateY negative) down past bottom */
+    @keyframes fall{
+      0%{transform: translate(-50%, -140%); opacity:0}
+      5%{opacity:1}
+      95%{opacity:1}
+      100%{transform: translate(-50%, 120%); opacity:0}
+    }
+
+    /* different speeds for layers */
+    .layer[data-speed='1'] .msg{animation-duration:12s}
+    .layer[data-speed='2'] .msg{animation-duration:14s}
+    .layer[data-speed='3'] .msg{animation-duration:16s}
+    .layer[data-speed='4'] .msg{animation-duration:18s}
+    .layer[data-speed='5'] .msg{animation-duration:20s}
+    .layer[data-speed='6'] .msg{animation-duration:22s}
+
+    /* each message will start at different delays so they appear sequentially */
+
+    /* pause on hover */
+    .layer:hover .msg{animation-play-state:paused}
+
+    /* mobile tweaks */
+    @media (max-width:700px){
+      .scene{flex-direction:column;padding:20px;gap:6px}
+      .msg{font-size:16px;max-width:90%}
+    }
+
+  </style>
+</head>
+<body>
+  <div class="stars"></div>
+  <div class="twinkle"></div>
+
+  <div class="scene" id="scene">
+    <!-- 6 layers will be injected here -->
+  </div>
+
+  <script>
+    // 15 câu chúc từ em dành cho chị nhân ngày chị sinh bé gái
+    const messages = [
+      "Chị ơi, chúc mừng ngày sinh bé gái — chúc cả nhà tràn đầy hạnh phúc!",
+      "Chúc chị bữa tháng đầu tiên an nhiên, mẹ khỏe con ngoan.",
+      "Em cầu chúc bé luôn được yêu thương, lớn lên khỏe mạnh và hay cười.",
+      "Chúc chị tận hưởng từng khoảnh khắc ngọt ngào bên thiên thần nhỏ.",
+      "Mong bé luôn gặp may mắn, cuộc đời trải đầy những vì sao sáng.",
+      "Chị là người mẹ tuyệt vời — em tin chị sẽ làm rất tốt.",
+      "Gửi đến bé những nụ hôn ấm áp và lời chúc yêu thương từ em.",
+      "Chúc gia đình mình luôn tràn ngập tiếng cười và tiếng ru êm.",
+      "Mong bé mau biết lẫy, biết bò, biết gọi mẹ với nụ cười tươi.",
+      "Chúc chị nhiều sức khoẻ để chăm con, ngủ đủ giấc khi có thể.",
+      "Hy vọng mỗi ngày mới của bé đều là một ngày hạnh phúc.",
+      "Em sẽ luôn ở bên chị khi cần — chúc mừng chị và bé yêu!",
+      "Chúc bé luôn hiền, ngoan, và lớn lên thông minh như chị mong ước.",
+      "Gửi lời chúc ấm áp đến mẹ và con: yêu thương vô bờ bến.",
+      "Chúc ngôi nhà của chị luôn đầy ánh sáng, tiếng cười và bình an."
+    ];
+
+    const scene = document.getElementById('scene');
+
+    // create 6 layers with slightly different speeds
+    for(let i=1;i<=6;i++){
+      const layer = document.createElement('div');
+      layer.className = 'layer';
+      layer.setAttribute('data-speed', i);
+      scene.appendChild(layer);
+    }
+
+    // distribute 15 messages into 6 layers as evenly as possible
+    const layers = Array.from(document.querySelectorAll('.layer'));
+    let li = 0;
+    for(let m=0;m<messages.length;m++){
+      const msgEl = document.createElement('div');
+      msgEl.className = 'msg';
+      // emphasize a few words
+      const text = messages[m].replace(/bé|bé gái|Chị/g, (w)=> (w==='Chị'? '<strong>'+w+'</strong>' : '<strong>'+w+'</strong>'));
+      msgEl.innerHTML = text;
+
+      // place initial horizontal offset within the layer
+      const xOffset = (Math.random()*60 - 30); // -30% .. 30% translateX tweak
+      msgEl.style.left = `calc(50% + ${xOffset}px)`;
+
+      // stagger vertical starting position using animation-delay
+      const baseDelay = (m%3) * 1.2 + Math.floor(m/3)*0.4;
+      msgEl.style.animationName = 'fall';
+      msgEl.style.animationTimingFunction = 'linear';
+      msgEl.style.animationIterationCount = 'infinite';
+      msgEl.style.animationFillMode = 'forwards';
+      msgEl.style.animationDelay = (baseDelay + (li*0.6)) + 's';
+
+      // assign to a layer (round-robin)
+      layers[li].appendChild(msgEl);
+      li = (li+1) % layers.length;
+    }
+
+    // make sure messages appear at slightly different vertical starting offsets (via transform in keyframes)
+    // users can hover a column to pause its messages
+
+  </script>
+</body>
+</html>
